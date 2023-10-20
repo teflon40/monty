@@ -2,7 +2,7 @@
 #define MONTY_H
 
 #define _GNU_SOURCE		1
-#define UNUSED(x)		((void) x)
+#define UNUSED(x)		((void) (x))
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -88,7 +88,7 @@ size_t strchr_no(const char *s, int ch);
 
 /* Instruction functions */
 void Add(stack_t **stack, unsigned int line_number);
-void Nop(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 void Pop(stack_t **stack, unsigned int line_number);
 void Push(stack_t **stack, unsigned int line_number);
 void Pall(stack_t **stack, unsigned int line_number);

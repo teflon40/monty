@@ -30,7 +30,7 @@ void Queue(__attribute__((unused)) stack_t **stack,
  * @stack: a stack.
  * @number: line number.
  */
-void Nop(__attribute__((unused)) stack_t **stack,
+void nop(__attribute__((unused)) stack_t **stack,
 		__attribute__((unused)) unsigned int number)
 {
 }

@@ -12,7 +12,6 @@ void ErrExit(stack_t *stack, const char *format, ...)
 
 	va_start(argList, format);
 	vfprintf(stderr, format, argList);
-	va_end(argList);
 
 	if (stack)
 		FreeStack(stack);
@@ -22,5 +21,7 @@ void ErrExit(stack_t *stack, const char *format, ...)
 		free(Input.buffer);
 	if (Input.fp)
 		fclose(Input.fp);
+
+	va_end(argList);
 	exit(EXIT_FAILURE);
 }
