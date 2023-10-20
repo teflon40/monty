@@ -34,5 +34,5 @@ int main(int ac, char *av[])
 	FreeStack(head);
 	free(Input->Buffer.buffer);
 	free(Input);
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
