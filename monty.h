@@ -112,4 +112,3 @@ void print_stack_str(const stack_t *stack);
 int lpop(stack_t **stack);
 
 #endif /* monty.h */
-#endif /* monty.h */
