@@ -14,6 +14,7 @@ int main(int ac, char *av[])
 	stack_t *head = NULL;
 	FILE *fp;
 
+	Input = InitializeInput();
 	if (ac != 2)
 		ErrExit(NULL, "USAGE: monty file\n");
 
@@ -21,7 +22,6 @@ int main(int ac, char *av[])
 	if (fp == NULL)
 		ErrExit(NULL, "Error: Can't open file %s\n", av[1]);
 
-	Input = InitializeInput();
 	Input->Buffer.fp = fp;
 	while (getline(&(Input->Buffer.buffer),
 		&(Input->Buffer.size), Input->Buffer.fp) != -1)
