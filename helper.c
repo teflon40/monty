@@ -40,3 +40,34 @@ PrepareResult PrepareBytecode(void)
 
 	return (PREPARE_BYTECODE_SUCCESS);
 }
+
+/**
+ * MakeNewBuffer - Creates an empty buffer.
+ * Return: a buffer.
+ */
+InputBuffer MakeNewBuffer(void)
+{
+	InputBuffer new_buffer = {NULL, NULL, 0, 0, 0};
+
+	return (new_buffer);
+}
+
+/**
+ * isNum - checks if string argument represents a number.
+ *
+ * @s: points to string argument.
+ * Return: TRUE if s is a number, otherwise FALSE.
+ */
+Boolean isNum(const char *s)
+{
+	int i = 0;
+
+	i += strspn(s, "+-");
+	while (s[i] != '\0')
+	{
+		if (isdigit(s[i]) == 0)
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
