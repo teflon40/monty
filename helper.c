@@ -1,24 +1,6 @@
 #include "monty.h"
 
 /**
- * InitializeMonty - Initialize input
- * Return: pointer to input
- */
-/*ReadLine *InitializeInput(void)
-{
-	ReadLine *input = (ReadLine *) malloc(sizeof(ReadLine));
-
-	if (input == NULL)
-		return (NULL);
-
-	input->Buffer = MakeNewBuffer();
-	input->Bytecodes = NULL;
-	input->Mode = STACK_MODE;
-
-	return (input);
-} */
-
-/**
  * PrepareBytecode - Prepares bytecodes for execution.
  *
  * Return: Success or failure

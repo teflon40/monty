@@ -25,7 +25,7 @@ void Queue(__attribute__((unused)) stack_t **stack,
 }
 
 /**
- * Nop - does nothing
+ * nop - does nothing
  *
  * @stack: a stack.
  * @number: line number.
