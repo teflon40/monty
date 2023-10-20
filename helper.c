@@ -4,7 +4,7 @@
  * InitializeMonty - Initialize input
  * Return: pointer to input
  */
-ReadLine *InitializeInput(void)
+/*ReadLine *InitializeInput(void)
 {
 	ReadLine *input = (ReadLine *) malloc(sizeof(ReadLine));
 
@@ -16,7 +16,7 @@ ReadLine *InitializeInput(void)
 	input->Mode = STACK_MODE;
 
 	return (input);
-}
+} */
 
 /**
  * PrepareBytecode - Prepares bytecodes for execution.
@@ -27,15 +27,15 @@ PrepareResult PrepareBytecode(void)
 {
 	size_t len, comment_position;
 
-	len = strlen(Input->Buffer.buffer);
-	Input->Buffer.buffer[len - 1] = '\0';
+	len = strlen(Input.buffer);
+	Input.buffer[len - 1] = '\0';
 
-	comment_position = strchr_no(Input->Buffer.buffer, '#');
+	comment_position = strchr_no(Input.buffer, '#');
 	if (comment_position < len)
-		Input->Buffer.buffer[comment_position] = '\0';
+		Input.buffer[comment_position] = '\0';
 
-	Input->Bytecodes = strtow(Input->Buffer.buffer);
-	if (Input->Bytecodes == NULL)
+	Input.Bytecodes = strtow(Input.buffer);
+	if (Input.Bytecodes == NULL)
 		return (PREPARE_BYTECODE_FAILURE);
 
 	return (PREPARE_BYTECODE_SUCCESS);
@@ -47,7 +47,7 @@ PrepareResult PrepareBytecode(void)
  */
 InputBuffer MakeNewBuffer(void)
 {
-	InputBuffer new_buffer = {NULL, NULL, 0, 0, 0};
+	InputBuffer new_buffer = {NULL, NULL, 0, 0, 0, 0};
 
 	return (new_buffer);
 }

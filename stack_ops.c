@@ -10,11 +10,11 @@ void Push(stack_t **stack, unsigned int number)
 {
 	int value;
 
-	if (Input->Bytecodes[1] == NULL || isNum(Input->Bytecodes[1]) == FALSE)
+	if (Input.Bytecodes[1] == NULL || isNum(Input.Bytecodes[1]) == FALSE)
 		ErrExit(*stack, "L%d: usage: push integer\n", number);
 
-	value = atoi(Input->Bytecodes[1]);
-	switch (Input->Mode)
+	value = atoi(Input.Bytecodes[1]);
+	switch (Input.Mode)
 	{
 		case STACK_MODE:			/* Operate in stack mode */
 			if (fpush(stack, value) == NULL)

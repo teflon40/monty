@@ -9,7 +9,7 @@
 void Stack(__attribute__((unused)) stack_t **stack,
 		__attribute__((unused)) unsigned int number)
 {
-	Input->Mode = STACK_MODE;
+	Input.Mode = STACK_MODE;
 }
 
 /**
@@ -21,7 +21,7 @@ void Stack(__attribute__((unused)) stack_t **stack,
 void Queue(__attribute__((unused)) stack_t **stack,
 		__attribute__((unused)) unsigned int number)
 {
-	Input->Mode = QUEUE_MODE;
+	Input.Mode = QUEUE_MODE;
 }
 
 /**

@@ -32,7 +32,7 @@ void ExecuteOpcode(stack_t **stack, unsigned int line_number)
 	i = 0;
 	while (cmd[i].opcode != NULL)
 	{
-		if (strcmp(cmd[i].opcode, Input->Bytecodes[0]) == 0)
+		if (strcmp(cmd[i].opcode, Input.Bytecodes[0]) == 0)
 		{
 			cmd[i].f(stack, line_number);
 			return;
@@ -40,5 +40,5 @@ void ExecuteOpcode(stack_t **stack, unsigned int line_number)
 		i++;
 	}
 	ErrExit(*stack, "L%d: unknown instruction %s\n",
-			line_number, Input->Bytecodes[0]);
+			line_number, Input.Bytecodes[0]);
 }

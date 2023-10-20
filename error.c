@@ -16,13 +16,11 @@ void ErrExit(stack_t *stack, const char *format, ...)
 
 	if (stack)
 		FreeStack(stack);
-	if (Input->Bytecodes)
+	if (Input.Bytecodes)
 		FreeBytecodes();
-	if (Input->Buffer.buffer)
-		free(Input->Buffer.buffer);
-	if (Input->Buffer.fp)
-		fclose(Input->Buffer.fp);
-	if (Input)
-		free(Input);
+	if (Input.buffer)
+		free(Input.buffer);
+	if (Input.fp)
+		fclose(Input.fp);
 	exit(EXIT_FAILURE);
 }

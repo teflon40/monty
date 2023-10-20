@@ -41,16 +41,18 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef enum { STACK_MODE, QUEUE_MODE } Mode_t;
+
 typedef struct
 {
 	FILE *fp;
 	char *buffer;
+	char **Bytecodes;
 	size_t size;
-	size_t bytes;
+	Mode_t Mode;
 	size_t line_number;
 } InputBuffer;
-
-typedef enum { STACK_MODE, QUEUE_MODE } Mode_t;
+extern InputBuffer Input;
 
 typedef enum
 {
@@ -60,16 +62,17 @@ typedef enum
 
 typedef enum { FALSE, TRUE } Boolean;
 
-typedef struct readline
+/*typedef struct readline
 {
 	InputBuffer Buffer;
 	char **Bytecodes;
 	Mode_t Mode;
 } ReadLine;
 extern ReadLine *Input;
+*/
 
-ReadLine *InitializeInput(void);
-InputBuffer MakeNewBuffer(void);
+/* ReadLine *InitializeInput(void); */
+/* InputBuffer MakeNewBuffer(void); */
 PrepareResult PrepareBytecode(void);
 void ExecuteOpcode(stack_t **head, unsigned int line_number);
 void FreeBytecodes(void);

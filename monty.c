@@ -1,6 +1,6 @@
 #include "monty.h"
 
-ReadLine *Input = NULL;
+InputBuffer Input = {NULL, NULL, NULL, 0, STACK_MODE, 0};
 
 /**
  * main - program starts from here
@@ -13,26 +13,23 @@ int main(int ac, char *av[])
 {
 	stack_t *head = NULL;
 
-	Input = InitializeInput();
 	if (ac != 2)
 		ErrExit(NULL, "USAGE: monty file\n");
 
-	Input->Buffer.fp = fopen(av[1], "r");
-	if (Input->Buffer.fp == NULL)
+	Input.fp = fopen(av[1], "r");
+	if (Input.fp == NULL)
 		ErrExit(NULL, "Error: Can't open file %s\n", av[1]);
 
-	while (getline(&(Input->Buffer.buffer),
-		&(Input->Buffer.size), Input->Buffer.fp) != -1)
+	while (getline(&(Input.buffer), &(Input.size), Input.fp) != -1)
 	{
-		Input->Buffer.line_number++;
+		Input.line_number++;
 		if (PrepareBytecode() == PREPARE_BYTECODE_FAILURE)
 			continue;
-		ExecuteOpcode(&head, Input->Buffer.line_number);
+		ExecuteOpcode(&head, Input.line_number);
 		FreeBytecodes();
 	}
-	fclose(Input->Buffer.fp);
+	fclose(Input.fp);
 	FreeStack(head);
-	free(Input->Buffer.buffer);
-	free(Input);
+	free(Input.buffer);
 	return (EXIT_SUCCESS);
 }
