@@ -39,4 +39,46 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+typedef struct
+{
+	FILE *fp;
+	char *buffer;
+	size_t size;
+	size_t bytes;
+	size_t line_number;
+} InputBuffer;
+
+typedef enum { STACK_MODE, QUEUE_MODE } Mode_t;
+
+typedef enum
+{
+	PREPARE_BYTECODE_SUCCESS,
+	PREPARE_BYTECODE_FAILURE
+} PrepareResult;
+
+typedef enum { FALSE, TRUE } Boolean;
+
+typedef struct readline
+{
+	InputBuffer Buffer;
+	char **Bytecodes;
+	Mode_t Mode;
+} ReadLine;
+extern ReadLine *Input;
+
+ReadLine *InitializeInput(void);
+InputBuffer MakeNewBuffer(void);
+PrepareResult PrepareBytecode(void);
+void ExecuteOpcode(stack_t **head, unsigned int line_number);
+void FreeBytecodes(void);
+void ErrExit(stack_t *stack, const char *format, ...);
+
+int getTop(stack_t *stack);
+void FreeStack(stack_t *stack);
+size_t stackLen(const stack_t *stack);
+Boolean isEmpty(stack_t *stack);
+Boolean isNum(const char *s);
+char **strtow(char *s);
+size_t strchr_no(const char *s, int ch);
 #endif /* monty.h */
