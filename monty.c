@@ -12,17 +12,15 @@ ReadLine *Input = NULL;
 int main(int ac, char *av[])
 {
 	stack_t *head = NULL;
-	FILE *fp;
 
 	Input = InitializeInput();
 	if (ac != 2)
 		ErrExit(NULL, "USAGE: monty file\n");
 
-	fp = fopen(av[1], "r");
-	if (fp == NULL)
+	Input->Buffer.fp = fopen(av[1], "r");
+	if (Input->Buffer.fp == NULL)
 		ErrExit(NULL, "Error: Can't open file %s\n", av[1]);
 
-	Input->Buffer.fp = fp;
 	while (getline(&(Input->Buffer.buffer),
 		&(Input->Buffer.size), Input->Buffer.fp) != -1)
 	{
