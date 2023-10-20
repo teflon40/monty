@@ -81,4 +81,35 @@ Boolean isEmpty(stack_t *stack);
 Boolean isNum(const char *s);
 char **strtow(char *s);
 size_t strchr_no(const char *s, int ch);
+
+/* Instruction functions */
+void Add(stack_t **stack, unsigned int line_number);
+void Nop(stack_t **stack, unsigned int line_number);
+void Pop(stack_t **stack, unsigned int line_number);
+void Push(stack_t **stack, unsigned int line_number);
+void Pall(stack_t **stack, unsigned int line_number);
+void Pint(stack_t **stack, unsigned int line_number);
+void Pop(stack_t **stack, unsigned int line_number);
+void Swap(stack_t **stack, unsigned int line_number);
+void Sub(stack_t **stack, unsigned int line_number);
+void Mul(stack_t **stack, unsigned int line_number);
+void Div(stack_t **stack, unsigned int line_number);
+void Mod(stack_t **stack, unsigned int line_number);
+void Pchar(stack_t **stack, unsigned int line_number);
+void Pstr(stack_t **stack, unsigned int line_number);
+void Rotl(stack_t **stack, unsigned int line_number);
+void Rotr(stack_t **stack, unsigned int line_number);
+void Stack(stack_t **stack, unsigned int line_number);
+void Queue(stack_t **stack, unsigned int line_number);
+
+/* Stacks and Queues Operations*/
+stack_t *fpush(stack_t **stack, int num);
+void print_stack(const stack_t *stack);
+int fpop(stack_t **stack);
+stack_t *enqueue(stack_t **stack, int num);
+void fswap(stack_t **stack);
+void print_stack_str(const stack_t *stack);
+int lpop(stack_t **stack);
+
+#endif /* monty.h */
 #endif /* monty.h */
