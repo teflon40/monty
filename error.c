@@ -11,8 +11,18 @@ void ErrExit(stack_t *stack, const char *format, ...)
 	va_list argList;
 
 	va_start(argList, format);
-	vfprintf(stderr, format, argList);
-
+	for (; *format; format++)
+	{
+		if (*format == '%')
+		{
+			if (*++format == 's')
+				fprintf(stderr, "%s", va_arg(argList, char *));
+			else
+				fprintf(stderr, "%d", va_arg(argList, int));
+		}
+		else
+			write(STDERR_FILENO, &(*format), 1);
+	}
 	if (stack)
 		FreeStack(stack);
 	if (Input->Bytecodes)
