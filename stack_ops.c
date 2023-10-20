@@ -39,3 +39,44 @@ void Pop(stack_t **stack, unsigned int number)
 		ErrExit(*stack, "L%d: can't pop an empty stack\n", number);
 	fpop(stack);
 }
+
+/**
+ * Rotr - rotates the stack to the bottom
+ *
+ * @stack: a stack.
+ * @number: line number.
+ */
+void Rotr(stack_t **stack, unsigned int number)
+{
+	UNUSED(number);
+
+	if (stackLen(*stack) > 1)
+		fpush(stack, lpop(stack));
+}
+
+/**
+ * Rotl - rotates the stack to the top
+ *
+ * @stack: a stack.
+ * @number: line number.
+ */
+void Rotl(stack_t **stack, unsigned int number)
+{
+	UNUSED(number);
+
+	if (!isEmpty(*stack))
+		enqueue(stack, fpop(stack));
+}
+
+/**
+ * Swap - swaps top two element.
+ *
+ * @stack: a stack.
+ * @number: line number.
+ */
+void Swap(stack_t **stack, unsigned int number)
+{
+	if (stackLen(*stack) < 2)
+		ErrExit(*stack, "L%d: can't swap, stack too short\n", number);
+	fswap(stack);
+}
